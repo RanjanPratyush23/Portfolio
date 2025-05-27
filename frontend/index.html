@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratyush Ranjan Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #a855f7;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+		html {
+			scroll-behavior: smooth;
+		}
+		
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(45deg, var(--dark), #0f172a);
+            color: var(--light);
+            font-family: 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+        }
+		
+		
+        /* Modern Glass Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+		
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .nav-links a:hover {
+            background: var(--glass);
+			color: #38bdf8;/* Tailwind sky-400 */
+        }
+		#menu-bar {
+			font-size: 2rem;
+			color: white;
+			cursor: pointer;
+			display: none; /* hidden by default on desktop */
+		}
+		
+		
+		
+		
+		
+		
+        /* Hero Section with Animated Gradient */
+        .hero {
+            height: 100%;
+            display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+            align-items: center;
+			padding: 120px 5% 15%;
+            /* padding: 0 5%; */
+            background: linear-gradient(45deg, #0f172a, #1e293b);
+            position: relative;
+            overflow: hidden;
+        }
+
+		.hero-left {
+			flex: 1;
+			padding: 2rem;
+		}
+
+		.hero-right {
+			flex: 1;
+			display: flex;
+			justify-content: center;  /* center horizontally */
+			align-items: center;      /* center vertically */
+			padding: 2rem;            /* optional, keeps inner spacing */
+			box-sizing: border-box;   /* ensures padding doesn't overflow */
+			
+			flex-direction: column;
+		}
+		
+		.nvm {
+			margin-top: 20px;
+		}
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 1;
+        }
+		.hero-content a{
+			color: #38bdf8;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+		
+		}
+		.hero-content a:hover {
+            background: var(--glass);
+			
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+		#about {
+			padding: 100px 5%;
+			background: #1e293b;
+			color: white;
+		}
+		
+		.heading {
+		
+			font-size: 2.5rem;
+			font-weight: bold;
+			margin-bottom: 2rem;
+			position: relative;
+			display: inline-block;
+		}
+		
+		.heading::after {
+			content: '';
+			display: block;
+			
+			height: 4px;
+			background: linear-gradient(to right, #6366f1, #a855f7);
+			border-radius: 2px;
+			margin-top: 8px;
+			
+		}
+		.about-content {
+			
+			display: flex;
+			justify-content: center;
+			align-items: stretch;
+			gap: 2rem;
+			flex-wrap: wrap;
+			position: relative;
+		}
+		
+		.wave {
+			display: inline-block;
+			animation: wave-animation 2s infinite;
+			transform-origin: 70% 70%;
+		}
+		
+		
+		.about-left {
+			
+			padding: 2rem;
+			
+			flex: 1 1 200px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			
+			min-height: 450px;
+		}
+		
+		
+		
+		
+		.about-right {
+			flex: 1 2 600px;
+			display: flex;
+			justify-content: center;
+			
+			flex-direction: column;
+			align-items: center;
+			
+			
+		}
+		.dp {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-bottom: 1.5rem;
+		}
+		
+		.dp img {
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			border: 4px solid #FFD700;
+			object-fit: cover;
+			margin-bottom: 1.5rem;
+			animation: bounce 2s infinite ease-in-out;
+		}
+		
+		.dp img:hover {
+			transform: scale(1.05);
+			
+		}
+		.about-left a{
+			color: #38bdf8;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+			
+		}
+		.about-left a:hover {
+            background: var(--glass);
+			
+        }
+		
+		.dp::after {
+			content: '';
+			width: 100px;
+			height: 10px;
+			background: rgba(0, 0, 0, 0.2);
+			border-radius: 50%;
+			margin-top: -1rem;
+			animation: shadowScale 2s infinite ease-in-out;
+		}
+		
+		.socialicons {
+            max-width: 600px;
+            z-index: 1;
+        }
+		
+
+		.socialicons a{
+			font-size: 1.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.7rem 1rem;
+            border-radius: 0.5rem;
+		
+		}
+		
+		
+		.socialicons a:hover {
+			
+			text-shadow: 0 0 12px #fff;
+            background: var(--glass);
+			
+        }
+		
+		.cv .btn {
+			display: inline-block;
+			background: linear-gradient(to right, #8b5cf6, #6366f1);
+			color: white;
+			font-weight: 600;
+			text-decoration: none;
+			margin-bottom: 2rem;
+			transition: transform 0.3s ease;
+		}
+		
+		
+		
+		.about-text {
+			background: rgba(255, 255, 255, 0.05);
+			backdrop-filter: blur(10px);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			padding: 2rem;
+			border-radius: 16px;
+			max-width: 700px;
+			width: 100%;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+			font-size: 1rem;
+			line-height: 1.8;
+		}
+		.about-text p {
+			margin: 1rem 0;
+		}
+		
+		
+		
+
+        /* Animated Cards */
+		.project-tag {
+			position: absolute;
+			top: 1rem;
+			right: 1rem;
+			background: var(--glass);
+			color: #5ced73;
+			font-size: 0.75rem;
+			padding: 0.3rem 0.6rem;
+			border-radius: 999px;
+			backdrop-filter: blur(5px);
+			font-weight: 600;
+			background-color: rgba(96, 165, 250, 0.1); /* Light transparent blue */
+			
+			
+		}
+        .project-card {
+			position:relative;
+            background: var(--glass);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			min-height: 500px;
+        }
+		.project-content {
+			flex-grow: 1;
+		}
+		.project-card ul {
+			list-style: none; /* Remove default bullets */
+			padding-left: 1rem; /* Keep indentation */
+		}
+
+		.project-card ul li {
+			position: relative;
+			padding-left: 1.5rem; /* Space for the icon */
+			margin-bottom: 0.5rem;
+		}
+
+		.project-card ul li::before {
+			content: "✅"; /* Change to , 🚀, etc., if preferred */
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+
+		
+		.card-footer {
+			display: flex;
+			justify-content: flex-end;
+			margin-top: auto;
+			padding-top: 1rem;
+		}
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+		
+		.project-card img {
+			width: 100%;
+			border-radius: 0.5rem;
+			margin-bottom: 1rem;
+			object-fit: cover;
+		}
+
+        /* Gradient Buttons */
+        .btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 500;
+			text-decoration: none;
+			display: inline-block;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Hover Effects */
+        .skills-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+			gap: 1.5rem;
+			margin-top: 1rem;
+		}
+		
+		.skill-card {
+			background: #1e293b;
+			padding: 1.5rem;
+			border-radius: 1rem;
+			position: relative;
+			box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+			transition: transform 0.3s ease;
+		}
+		.skill-card:hover {
+			transform: translateY(-10px);
+		}
+		
+		.badge {
+			background: #fca5a5;
+			color: #0f172a;
+			padding: 0.4rem 0.75rem;
+			border-radius: 1rem;
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-weight: bold;
+			font-size: 0.9rem;
+			margin-bottom: 1rem;
+		
+		}
+		
+		.badge i {
+			font-size: 1.2rem;
+		}
+		
+		.progress-bar {
+			width: 100%;
+			height: 8px;
+			background: #334155;
+			border-radius: 5px;
+			overflow: hidden;
+			margin: 0.5rem 0;
+		}
+		.progress {
+			height: 100%;
+			background: #6366f1;
+		}
+		
+		.title {
+			font-size: 1.25rem;
+			margin-bottom: 0.25rem;
+		}
+		
+		.level {
+			font-size: 0.85rem;
+			color: #94a3b8;
+		}
+
+        /* Animated Background Elements */
+        .gradient-blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 30% 70% 70% 30%;
+            filter: blur(100px);
+            opacity: 0.1;
+            animation: move 20s infinite;
+        }
+
+        @keyframes move {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(100px, 100px); }
+            50% { transform: translate(-50px, 150px); }
+            75% { transform: translate(-100px, -50px); }
+        }
+
+		
+		
+        /* Interactive Form */
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            color: white;
+        }
+		.svg-background {
+			position: absolute;
+			left: 0;
+			width: 100%;
+			
+			z-index: -1;
+		}
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+		.footer {
+			background: var(--glass);
+			width: 100%;
+			bottom: 0;
+			background-color: #1a1a2e; /* matches your dark theme */
+			color: #ccc;
+			text-align: center;
+			padding: 8px 0;
+			font-size: 14px;
+			border-top: 1px solid #333;
+			z-index: 10;
+		}
+		.footer-container {
+			max-width: 1000px;
+			margin: auto;
+		}
+		.footer-icons {
+			margin-top: 10px;
+		}
+		.footer-icons a {
+			margin: 0 10px;
+			color: #ccc;
+			transition: color 0.3s ease;
+		}
+		.footer-icons a:hover {
+			color: #7f5af0; /* Purple highlight on hover */
+		}
+		
+		/* Responsive Nav for Mobile */
+		@media (max-width: 768px) {
+			#menu-bar {
+				display: block;
+			}
+
+			.nav-links {
+				display: none;
+				flex-direction: column;
+				align-items: center;
+				position: absolute;
+				top: 100%;
+				left: 0;
+				width: 100%;
+				background: var(--dark);
+				backdrop-filter: blur(15px);
+				padding: 1rem 0;
+				border-top: 1px solid rgba(255, 255, 255, 0.1);
+			}
+
+			.navbar.active .nav-links {
+				display: flex;
+			}
+		}
+		
+		@media (max-width: 768px) {
+			.about-container {
+				flex-direction: column;
+			}
+			.about-container::before {
+				display: none;
+			}
+		}
+		
+		@keyframes bounce {
+			0%, 100% {
+				transform: translateY(0);
+			}
+			50% {
+				transform: translateY(-15px);
+			}
+		}
+		
+		@keyframes wave-animation {
+			0% { transform: rotate( 0.0deg); }
+			10% { transform: rotate(14.0deg); }
+			20% { transform: rotate(-8.0deg); }
+			30% { transform: rotate(14.0deg); }
+			40% { transform: rotate(-4.0deg); }
+			50% { transform: rotate(10.0deg); }
+			60% { transform: rotate( 0.0deg); }
+			100% { transform: rotate( 0.0deg); }
+		}
+		
+		@keyframes shadowScale {
+			0%, 100% {
+				transform: scaleX(1);
+				opacity: 0.3;
+			}
+			50% {
+				transform: scaleX(0.6);
+				opacity: 0.1;
+			}
+		}
+
+
+
+    </style>
+</head>
+<body>
+	<header>
+		<div class="navbar">
+
+			<h2 class = "logo" >Portfolio</h2>
+		
+            <div id="menu-bar" class="fa-solid fa-bars"></div>
+		
+			<nav class="nav-links">
+				
+			
+				<a href="#home"><i class="fas fa-house"></i>&nbsp;&nbsp;Home</a>
+				<a href="#about"><i class="fas fa-user"></i>&nbsp;&nbsp;About</a>
+				<a href="#skills"><i class="fas fa-code"></i>&nbsp;&nbsp;Skills</a>
+				<a href="#projects"><i class="fas fa-folder-open"></i>&nbsp;&nbsp;Projects</a>
+				<a href="#contact"><i class="fas fa-envelope"></i>&nbsp;&nbsp;Contact</a>
+			
+			
+			
+			</nav>
+			
+		</div>
+		
+	</header>
+	
+	
+
+    <section class="hero" id="home">
+        <div class="gradient-blob"></div>
+		<div class="hero-left">
+			<div class="hero-content">
+				
+				
+				<h1>Welcome, I'm Pratyush Ranjan </h1>
+				<p>Electronics & Communication Engineer | Tech & Motorsports Enthusiast</p>
+				
+				<h2 style="font-size: 1.8rem; margin-bottom: 2rem;">Looking for a job as a <span class="typing-text" style="color: #5ced73";></span></h2>
+			
+				<br>
+				
+			</div>
+		</div>
+		<div class="hero-right">
+			<script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+			<dotlottie-player src="https://lottie.host/251b3f34-8e12-40d2-9cea-ebf61c6a9d97/Y8Olc2qhzL.lottie" background="transparent" speed="1" style="width: 400px; height: 400px" loop autoplay ></dotlottie-player>
+			<br>
+			<div>
+			<button type="button" onclick="scrollToProjects()"  class = "btn">View My Work</button>
+			</div>
+		</div>
+    </section>
+
+    <!-- Add other sections (About, Skills, Projects, Contact) with similar modern styling -->
+	
+	
+	<!-- About Section -->
+	<section id="about" style="padding: 100px 5%; background: #1e293b;">
+		<h2 class ="heading" >About Me</h2>
+		<div class ="about-content">
+			<div class ="about-left">
+				<div class="dp">
+					<img src = "images/dp.jpg" alt="">
+				</div>
+				<div class="socialicons" style="margin-bottom: 1.5rem;">
+				<a href="https://www.linkedin.com/in/pratyush-ranjan-a42228233/" target="_blank" class="fa-brands fa-linkedin" style="color:#0A66C2;"></a>
+				<a href="https://github.com/Pratyushranjan23" target="_blank" class="fa-brands fa-github" style="color:#ffffff;"></a>
+				<a href="mailto:ranjanpratyush2003@gmail.com"><i class="fas fa-envelope" style="color:#38BDF8;"></i></a>
+				<a href="https://www.instagram.com/_.pratyushranjan._/" target="_blank" class="fa-brands fa-instagram" style="color:#E1306C;"></a>
+				
+				</div>
+				<div class = "cv">
+					<a href="CV.pdf" target="_blank" class="btn"><i class="fas fa-download" style="margin-right: 8px;"></i>Download My CV</a>
+				</div>
+				
+
+			</div>
+		
+			<div class="about-right">
+				<div class="about-text">
+					<h1 style="font-size:2rem;">Hey!<span class="wave">👋🏻</span></h1>
+					<p style="color:#D1D5DB; margin-bottom:1.5rem;">I’m Pratyush Ranjan, an Electronics & Communication Engineer passionate about both embedded systems and modern software development. I enjoy building smart solutions by blending hardware and software from microcontrollers to full-stack tech. Inspired by engineering innovation, especially in motorsports, I aim to solve real-world problems with creativity and precision.</p>
+					
+		
+				
+					
+					<p><i class="fas fa-envelope" style="color: #3b82f6; margin-right: 0.5rem;"></i> <strong>Email:</strong> <span style="color:#5ced73;">ranjanpratyush2003@gmail.com</span></p>
+					<p><i class="fas fa-map-marker-alt" style ="color: #f97316; margin-right: 0.5rem;"></i> <strong>Address:</strong> Hyderabad, India</p>
+					<p><i class="fas fa-user" style = "color: #38bdf8; margin-right: 0.5rem;"></i> <strong>Freelance:</strong> <span style="color:#5ced73;">Available</span></p>
+					
+					<p style="font-style: italic; color: #94a3b8; text-align: center">
+						“Engineering is the closest thing to magic that exists in the world.” – Elon Musk
+					</p>
+				</div>
+		
+			</div>
+		</div>
+	</section>
+
+	<!-- Skills Section -->
+	<section id="skills" style="padding: 100px 5%; background: #0f172a;">
+		<h2 class ="heading" style="font-size: 2.5rem; margin-bottom: 2rem;">Skills</h2>
+		<!-- Group: Programming -->
+		<h3 style="margin-top: 2rem; font-size: 1.5rem;">Programming</h3>
+		<div class="skills-grid">
+			<div class="skill-card">
+				<div class="badge">
+					<i class="fab fa-python"></i>
+					<span>Python</span>
+				</div>
+				<p class="title">Python</p>
+				<div class="progress-bar"><div class="progress" style="width: 80%"></div></div>
+				<p class="level">80% - Advanced</p>
+			</div>
+			<div class="skill-card">
+				<div class="badge">
+					<i class="fab fa-java"></i>
+					<span>Java</span>
+				</div>
+				<p class="title">Java</p>
+				<div class="progress-bar"><div class="progress" style="width: 75%"></div></div>
+				<p class="level">75% - Intermediate</p>
+			</div>
+			<div class="skill-card">
+				<div class="badge">
+					<i class="fas fa-microchip"></i>
+					<span>Verilog</span>
+				</div>
+				<p class="title">Verilog</p>
+				<div class="progress-bar"><div class="progress" style="width: 70%"></div></div>
+				<p class="level">70% - Intermediate</p>
+			</div>
+		</div>
+		
+		<!-- Group: Web Technologies-->
+		<h3 style="margin-top: 2rem; font-size: 1.5rem;">Web Technologies</h3>
+		<div class="skills-grid">
+			<div class="skill-card">
+				<div class="badge">
+					<i class="fab fa-html5"></i>
+					<span>HTML & CSS</span>
+				</div>
+				<p class="title">HTML & CSS</p>
+				<div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
+				<p class="level">85% - Advanced</p>
+			</div>
+			<div class="skill-card">
+				<div class="badge">
+					<i class="fab fa-js-square"></i>
+					<span>JavaScript</span>
+				</div>
+				<p class="title">JavaScript</p>
+				<div class="progress-bar"><div class="progress" style="width: 70%"></div></div>
+				<p class="level">70% - Intermediate</p>
+			</div>
+			<div class="skill-card">
+				<div class="badge">
+					<i class="fab fa-react"></i>
+					<span>React</span>
+				</div>
+				<p class="title">React</p>
+				<div class="progress-bar"><div class="progress" style="width: 50%"></div></div>
+				<p class="level">50% - Intermediate</p>
+			</div>
+		</div>
+		<!-- Group: Databases -->
+		<h3 style="margin-top: 2rem; font-size: 1.5rem;">Databases</h3>
+		<div class="skills-grid">
+			<div class="skill-card">
+				<div class="badge">
+					<i class="fas fa-database"></i>
+					<span>MySql</span>
+				</div>
+				<p class="title">MySql</p>
+				<div class="progress-bar"><div class="progress" style="width: 75%"></div></div>
+				<p class="level">75% - Intermediate</p>
+			</div>
+			<div class="skill-card">
+				<div class="badge">
+					<i class="fas fa-server"></i>
+					<span>Oracle</span>
+				</div>
+				<p class="title">Oracle</p>
+				<div class="progress-bar"><div class="progress" style="width: 70%"></div></div>
+				<p class="level">70% - Intermediate</p>
+			</div>
+			
+		</div>
+		
+		<!-- Group: Embedded & IoT-->
+		<h3 style="margin-top: 2rem; font-size: 1.5rem;">Embedded & IoT</h3>
+		<div class="skills-grid">
+			<div class="skill-card">
+				<div class="badge">
+					<i class="fas fa-microchip"></i>
+					<span>Arduino Microcontroller</span>
+				</div>
+				<p class="title">Arduino Uno</p>
+				<div class="progress-bar"><div class="progress" style="width: 75%"></div></div>
+				<p class="level">75% - Intermediate</p>
+			</div>
+			<div class="skill-card">
+				<div class="badge">
+					<i class="fas fa-microchip"></i>
+					<span>ESP32 Microcontroller</span>
+				</div>
+				<p class="title">ESP32 Microcontroller</p>
+				<div class="progress-bar"><div class="progress" style="width: 70%"></div></div>
+				<p class="level">70% - Intermediate</p>
+			</div>
+			
+		</div>
+	</section>
+
+	<!-- Projects Section -->
+	<section id="projects" style="padding: 100px 5%; background: #1e293b;">
+		<h2 class ="heading" style="font-size: 2.5rem; margin-bottom: 2rem;">Projects</h2>
+		<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+			<div class="project-card">
+				<span class="project-tag">#Embedded & #IoT </span>
+				<div class="project-content">
+					<h3 style= "margin-top:1.5rem; margin-bottom: 1rem; text-align: center">🛡️ ESP32 Based Military Robot</h3>
+					<img src="images/robot.jpg" alt="IoT Military Robot" style="width: 100%; border-radius: 1rem; margin-bottom: 1rem;">
+					<ul style="margin: 0.8rem 0; padding-left: 1rem;">
+						<li>Equipped with ESP32, camera, and multiple sensors (IR, ultrasonic, gas).</li>
+						<li>Capable of military surveillance, motion detection, and hazard alerts.</li>
+						<li>Communicates via MQTT protocol to a remote control dashboard.</li>
+						<li>Designed for real-time monitoring and wireless control in field environments.</li>
+					</ul>
+				</div>
+				<div class="card-footer">
+					<a href="https://drive.google.com/drive/folders/1qdIR08b5kGYneMliJG4YVAtk-yksMOU7" target="_blank" class="btn">View Files</a>
+				</div>
+			</div>
+			<div class="project-card">
+				<span class="project-tag">#Embedded</span>
+				<div class="project-content">
+					<h3 style= "margin-top:1.5rem; margin-bottom: 1rem; text-align: center">💧 Smart Water Pump</h3>
+					<img src="images/pump.png" alt="IoT Military Robot" style="width: 100%; border-radius: 1rem; ">
+					<ul style="margin: 0.8rem 0; padding-left: 1rem;">
+						<li>Uses Arduino Uno, GSM module, and relay board for automation.</li>
+						<li>Allows farmers to remotely control pump via SMS.</li>
+						<li>Designed for efficient water management in agriculture.</li>
+						<li>Low-cost and scalable for rural use.</li>
+					</ul>
+				</div>
+				<div class="card-footer">
+					<a href="https://drive.google.com/drive/folders/1qdIR08b5kGYneMliJG4YVAtk-yksMOU7" target="_blank" class="btn">View Files</a>
+				</div>
+			</div>
+			<div class="project-card">
+				<span class="project-tag">#WebDev</span>
+				<div class="project-content">
+					<h3 style= "margin-top:1.5rem; margin-bottom: 1rem; text-align: center">🌐 Portfolio Website</h3>
+					<img src="images/portfolio.png" alt="IoT Military Robot" style="width: 100%; border-radius: 1rem; ">
+					<p style="margin-bottom:1rem;">A modern and responsive personal portfolio built using HTML, CSS, and JavaScript. It features a clean design with glassmorphism effects, smooth animations, and a focus on user experience. The website is fully responsive across all devices and optimized for performance. Deployed using GitHub Pages and GitHub Actions for CI/CD.</p>
+				</div>
+				<div class="card-footer">
+					<a href="https://drive.google.com/drive/folders/1qdIR08b5kGYneMliJG4YVAtk-yksMOU7" target="_blank" class="btn">View Files</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact Section -->
+	<!-- Decorative SVG Background -->
+	
+
+	<section id="contact" style="padding: 100px 5%; background: #0f172a;">
+		<div data-aos="zoom-in-left" data-aos-duration="1000">
+			<h2 class="heading" style="font-size: 2.5rem; margin-bottom: 2rem;">Contact Me</h2>
+			<form class="contact-form" id="contactForm" style="max-width: 600px;">
+				<input type="text" id="name" placeholder="Your Name" required />
+				<input type="email" id="email" placeholder="Your Email" required />
+				<textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+				<button type="submit" class="btn">Send Message</button>
+			</form>
+			<p id="responseMessage" style="color: white; margin-top: 1rem;"></p>
+		</div>
+	</section>
+	
+	<div class="svg-background">
+		<svg viewBox="0 150 1440 100" preserveAspectRatio="none">
+			<path fill="#6c63ff" fill-opacity="0.1" 
+				d="M0,256L60,240C120,224,240,192,360,197.3C480,203,600,245,720,250.7C840,256,960,224,1080,202.7C1200,181,1320,171,1380,165.3L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+			</path>
+		</svg>
+	</div>
+	<footer class="footer">
+		<div class="footer-container">
+			<p>&copy; 2025 Pratyush Ranjan. All rights reserved.</p>
+			<div class="footer-icons">
+				<a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+				<a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
+				<a href="mailto:ranjanpratyush2003@gmail.com"><i class="fas fa-envelope"></i></a>
+			</div>
+		</div>
+	</footer>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+	
+		const menuBar = document.getElementById('menu-bar');
+		const navbar = document.querySelector('.navbar');
+
+		menuBar.addEventListener('click', () => {
+			navbar.classList.toggle('active');
+		});
+
+		
+        // Interactive Scroll Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.project-card, .skill-item').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+		
+		var typed = new Typed('.typing-text', {
+            strings: ["Full Stack developer", 'Software Engineer', 'Database Engineer','Embedded Systems Engineer'],
+            loop: true,
+            typeSpeed: 120,
+            backSpeed: 30,
+
+
+        })
+		
+		function scrollToProjects() {
+			const projectsSection = document.getElementById("projects");
+			projectsSection.scrollIntoView({ behavior: "smooth" });
+		}
+		AOS.init();
+		
+		
+		const form = document.getElementById('contactForm');
+		const responseMessage = document.getElementById('responseMessage');
+
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+	
+			const name = document.getElementById('name').value.trim();
+			const email = document.getElementById('email').value.trim();
+			const message = document.getElementById('message').value.trim();
+
+			if (!name || !email || !message) {
+				responseMessage.textContent = 'Please fill all fields.';
+				responseMessage.style.color = 'red';
+				return;
+			}
+
+			try {
+				const response = await fetch('http://localhost:5000/contact', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({ name, email, message })
+				});
+
+				const data = await response.json();
+
+				if (response.ok) {
+					responseMessage.textContent = data.message || 'Message sent successfully!';
+					responseMessage.style.color = 'lightgreen';
+					form.reset();
+				} else {
+					responseMessage.textContent = data.error || 'Failed to send message.';
+					responseMessage.style.color = 'red';
+				}
+			} catch (error) {
+				responseMessage.textContent = 'Error connecting to server.';
+				responseMessage.style.color = 'red';
+			}
+		});
+    </script>
+</body>
+</html>
