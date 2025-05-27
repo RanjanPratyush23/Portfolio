@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const app = express();
-const PORT = 5000;
+
+// Use the PORT from Render or fallback to 5000 for local development
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
@@ -16,7 +18,7 @@ mongoose.connect('mongodb+srv://pratyushranjan23:_MwM5.Ga%256_w%23r3@cluster1.cc
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.log(err));
 
-// Schema and model
+// Define schema and model
 const ContactSchema = new mongoose.Schema({
     name: String,
     email: String,
@@ -24,7 +26,7 @@ const ContactSchema = new mongoose.Schema({
 });
 const Contact = mongoose.model('Contact', ContactSchema);
 
-// Route to handle form submission
+// Handle form submission
 app.post('/contact', async (req, res) => {
     const { name, email, message } = req.body;
     try {
@@ -36,6 +38,7 @@ app.post('/contact', async (req, res) => {
     }
 });
 
+// Start server
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
