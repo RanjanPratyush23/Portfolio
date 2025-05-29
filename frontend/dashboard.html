@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Submissions Dashboard</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+  </style>
+</head>
+<body>
+  <h1>Contact Form Submissions</h1>
+  <table>
+    <thead>
+      <tr><th>Name</th><th>Email</th><th>Message</th></tr>
+    </thead>
+    <tbody id="submissionTable"></tbody>
+  </table>
+
+  <script>
+    fetch('https://portfolio-m0l5.onrender.com/submissions')
+      .then(res => res.json())
+      .then(data => {
+        const table = document.getElementById('submissionTable');
+        data.forEach(sub => {
+          const row = document.createElement('tr');
+          row.innerHTML = `<td>${sub.name}</td><td>${sub.email}</td><td>${sub.message}</td>`;
+          table.appendChild(row);
+        });
+      })
+      .catch(err => console.error('Failed to load submissions', err));
+  </script>
+</body>
+</html>
