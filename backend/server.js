@@ -37,7 +37,15 @@ app.post('/contact', async (req, res) => {
         res.status(500).json({ error: 'Something went wrong' });
     }
 });
-
+// ✅ NEW: Handle GET request to fetch all submissions
+app.get('/submissions', async (req, res) => {
+    try {
+        const submissions = await Contact.find();
+        res.status(200).json(submissions);
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to fetch submissions' });
+    }
+});
 // Start server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
