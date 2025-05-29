@@ -906,6 +906,7 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-9N616J9W36"></script> <!-- Google tag (gtag.js) -->
     <script>
 	
 		const menuBar = document.getElementById('menu-bar');
@@ -995,6 +996,11 @@
 				responseMessage.style.color = 'red';
 			}
 		});
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-9N616J9W36');
     </script>
 </body>
 </html>
