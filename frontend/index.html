@@ -53,6 +53,7 @@
             align-items: center;
             z-index: 1000;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+			
         }
 		
 
@@ -81,7 +82,9 @@
 			display: none; /* hidden by default on desktop */
 		}
 		
-		
+		.close-btn {
+			display: none;
+		}
 		
 		
 		
@@ -224,7 +227,7 @@
 			width: 200px;
 			height: 200px;
 			border-radius: 50%;
-			border: 4px solid #FFD700;
+			border: 4px solid #8A2BE2;
 			object-fit: cover;
 			margin-bottom: 1.5rem;
 			animation: bounce 2s infinite ease-in-out;
@@ -254,7 +257,7 @@
 			height: 10px;
 			background: rgba(0, 0, 0, 0.2);
 			border-radius: 50%;
-			margin-top: -1rem;
+			margin-top: -1.5rem;
 			animation: shadowScale 2s infinite ease-in-out;
 		}
 		
@@ -290,7 +293,13 @@
 			text-decoration: none;
 			margin-bottom: 2rem;
 			transition: transform 0.3s ease;
+			padding:1rem;
+			border-radius: 50px;
 		}
+		.cv .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+        }
 		
 		
 		
@@ -391,7 +400,7 @@
             border: none;
             border-radius: 0.5rem;
             cursor: pointer;
-            font-weight: 500;
+            font-weight: 600;
 			text-decoration: none;
 			display: inline-block;
         }
@@ -410,19 +419,21 @@
 		}
 		
 		.skill-card {
-			background: #1e293b;
+			background: #ffffff;
+			color:#111;
 			padding: 1.5rem;
-			border-radius: 1rem;
+			border-radius: 1.5rem;
 			position: relative;
 			box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 			transition: transform 0.3s ease;
+			
 		}
 		.skill-card:hover {
 			transform: translateY(-10px);
 		}
 		
 		.badge {
-			background: #fca5a5;
+			background: #ffffff;
 			color: #0f172a;
 			padding: 0.4rem 0.75rem;
 			border-radius: 1rem;
@@ -439,28 +450,13 @@
 			font-size: 1.2rem;
 		}
 		
-		.progress-bar {
-			width: 100%;
-			height: 8px;
-			background: #334155;
-			border-radius: 5px;
-			overflow: hidden;
-			margin: 0.5rem 0;
-		}
-		.progress {
-			height: 100%;
-			background: #6366f1;
-		}
 		
 		.title {
 			font-size: 1.25rem;
 			margin-bottom: 0.25rem;
 		}
 		
-		.level {
-			font-size: 0.85rem;
-			color: #94a3b8;
-		}
+		
 
         /* Animated Background Elements */
         .gradient-blob {
@@ -537,28 +533,80 @@
 			color: #7f5af0; /* Purple highlight on hover */
 		}
 		
+		#backToTop {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			z-index: 99;
+			background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+			color: white;
+			border: none;
+			outline: none;
+			padding: 12px 16px;
+			border-radius: 50%;
+			font-size: 18px;
+			cursor: pointer;
+			box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+			display: none; /* initially hidden */
+			animation: bounce 2s infinite ease-in-out;
+		}
+
+		
 		/* Responsive Nav for Mobile */
 		@media (max-width: 768px) {
+			
 			#menu-bar {
 				display: block;
+				
 			}
 
 			.nav-links {
-				display: none;
 				flex-direction: column;
-				align-items: center;
+				position: fixed;
+				top: 0;
+				right: -50%;
+				width: 50%;
+				height: 100vh;
+				background: #0f172a; /* dark blue/indigo */
+				opacity: 1;          /* ensure it's not transparent */
+				box-shadow: -2px 0 10px rgba(0, 0, 0, 0.4);
+				align-items: center;      /* centers horizontally */
+				text-align: center;
+				padding-top: 5rem;
+				transition: right 0.3s ease;
+				z-index: 1001;
+			}
+			.close-btn {
+				display: block;
 				position: absolute;
-				top: 100%;
-				left: 0;
-				width: 100%;
-				background: var(--dark);
-				backdrop-filter: blur(15px);
-				padding: 1rem 0;
-				border-top: 1px solid rgba(255, 255, 255, 0.1);
+				top: 1rem;
+				right: 1.2rem;
+				font-size: 1.2rem;
+				color: white;
+				cursor: pointer;
+				z-index: 1002;
 			}
 
-			.navbar.active .nav-links {
-				display: flex;
+			.nav-links.active {
+				right: 0;
+				
+			}
+			
+			
+			.overlay {
+				position: fixed;
+				top: 0;
+				right: 0;
+				width: 50%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.4);
+				display: none;
+				z-index: 1000;
+			}
+			
+			.overlay.active {
+				display: block;
+				
 			}
 		}
 		
@@ -612,10 +660,10 @@
 
 			<h2 class = "logo" >Portfolio</h2>
 		
-            <div id="menu-bar" class="fa-solid fa-bars"></div>
-		
-			<nav class="nav-links">
-				
+            <div id="menu-bar" class="fa-solid fa-bars" tabindex="0" aria-label="Toggle menu"></div>
+			<div class="overlay" id="overlay"></div>
+			<nav class="nav-links" id="nav-links">
+				<div class="close-btn" id="close-btn"><i class="fas fa-times"></i></div>
 			
 				<a href="#home"><i class="fas fa-house"></i>&nbsp;&nbsp;Home</a>
 				<a href="#about"><i class="fas fa-user"></i>&nbsp;&nbsp;About</a>
@@ -670,10 +718,10 @@
 					<img src = "images/dp.jpg" alt="">
 				</div>
 				<div class="socialicons" style="margin-bottom: 1.5rem;">
-				<a href="https://www.linkedin.com/in/pratyush-ranjan-a42228233/" target="_blank" class="fa-brands fa-linkedin" style="color:#0A66C2;"></a>
-				<a href="https://github.com/Pratyushranjan23" target="_blank" class="fa-brands fa-github" style="color:#ffffff;"></a>
-				<a href="mailto:ranjanpratyush2003@gmail.com"><i class="fas fa-envelope" style="color:#38BDF8;"></i></a>
-				<a href="https://www.instagram.com/_.pratyushranjan._/" target="_blank" class="fa-brands fa-instagram" style="color:#E1306C;"></a>
+				<a href="https://www.linkedin.com/in/pratyush-ranjan-a42228233/" target="_blank" class="fa-brands fa-linkedin" style="color:#5ced73;"></a>
+				<a href="https://github.com/Pratyushranjan23" target="_blank" class="fa-brands fa-github" style="color:#5ced73;"></a>
+				<a href="mailto:ranjanpratyush2003@gmail.com"><i class="fas fa-envelope" style="color:#5ced73;"></i></a>
+				<a href="https://www.instagram.com/_.pratyushranjan._/" target="_blank" class="fa-brands fa-instagram" style="color:#5ced73;"></a>
 				
 				</div>
 				<div class = "cv">
@@ -708,112 +756,78 @@
 	<section id="skills" style="padding: 100px 5%; background: #0f172a;">
 		<h2 class ="heading" style="font-size: 2.5rem; margin-bottom: 2rem;">Skills</h2>
 		<!-- Group: Programming -->
-		<h3 style="margin-top: 2rem; font-size: 1.5rem;">Programming</h3>
+		<h3 style="margin-top: 2rem; font-size: 1.5rem; color: #5ced73;">Programming</h3>
 		<div class="skills-grid">
 			<div class="skill-card">
-				<div class="badge">
-					<i class="fab fa-python"></i>
-					<span>Python</span>
-				</div>
-				<p class="title">Python</p>
-				<div class="progress-bar"><div class="progress" style="width: 80%"></div></div>
-				<p class="level">80% - Advanced</p>
+				
+				<h3><i class="fab fa-python"></i>&nbsp;&nbsp;Python</h3>
+				
 			</div>
 			<div class="skill-card">
-				<div class="badge">
-					<i class="fab fa-java"></i>
-					<span>Java</span>
-				</div>
-				<p class="title">Java</p>
-				<div class="progress-bar"><div class="progress" style="width: 75%"></div></div>
-				<p class="level">75% - Intermediate</p>
+				
+				<h3><i class="fab fa-java"></i>&nbsp;&nbsp;Java</h3>
+				
 			</div>
 			<div class="skill-card">
-				<div class="badge">
-					<i class="fas fa-microchip"></i>
-					<span>Verilog</span>
-				</div>
-				<p class="title">Verilog</p>
-				<div class="progress-bar"><div class="progress" style="width: 70%"></div></div>
-				<p class="level">70% - Intermediate</p>
+				
+				<h3><i class="fas fa-microchip"></i>&nbsp;&nbsp;Verilog</h3>
+				
 			</div>
 		</div>
 		
 		<!-- Group: Web Technologies-->
-		<h3 style="margin-top: 2rem; font-size: 1.5rem;">Web Technologies</h3>
+		<h3 style="margin-top: 2rem; font-size: 1.5rem; color: #5ced73;">Web Technologies</h3>
 		<div class="skills-grid">
 			<div class="skill-card">
-				<div class="badge">
-					<i class="fab fa-html5"></i>
-					<span>HTML & CSS</span>
-				</div>
-				<p class="title">HTML & CSS</p>
-				<div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
-				<p class="level">85% - Advanced</p>
+				
+				<h3><i class="fab fa-html5"></i>&nbsp;&nbsp;HTML & CSS</h3>
+				
 			</div>
 			<div class="skill-card">
-				<div class="badge">
-					<i class="fab fa-js-square"></i>
-					<span>JavaScript</span>
-				</div>
-				<p class="title">JavaScript</p>
-				<div class="progress-bar"><div class="progress" style="width: 70%"></div></div>
-				<p class="level">70% - Intermediate</p>
+				
+				<h3><i class="fab fa-js-square"></i>&nbsp;&nbsp;JavaScript</h3>
+				
 			</div>
 			<div class="skill-card">
-				<div class="badge">
-					<i class="fab fa-react"></i>
-					<span>React</span>
-				</div>
-				<p class="title">React</p>
-				<div class="progress-bar"><div class="progress" style="width: 50%"></div></div>
-				<p class="level">50% - Intermediate</p>
+			
+				<h3><i class="fab fa-react"></i>&nbsp;&nbsp;React</h3>
+				
 			</div>
 		</div>
 		<!-- Group: Databases -->
-		<h3 style="margin-top: 2rem; font-size: 1.5rem;">Databases</h3>
+		<h3 style="margin-top: 2rem; font-size: 1.5rem; color: #5ced73;">Databases</h3>
 		<div class="skills-grid">
 			<div class="skill-card">
-				<div class="badge">
-					<i class="fas fa-database"></i>
-					<span>MySql</span>
-				</div>
-				<p class="title">MySql</p>
-				<div class="progress-bar"><div class="progress" style="width: 75%"></div></div>
-				<p class="level">75% - Intermediate</p>
+		
+				<h3><i class="fas fa-database"></i>&nbsp;&nbsp;MySql</h3>
+
 			</div>
 			<div class="skill-card">
-				<div class="badge">
-					<i class="fas fa-server"></i>
-					<span>Oracle</span>
-				</div>
-				<p class="title">Oracle</p>
-				<div class="progress-bar"><div class="progress" style="width: 70%"></div></div>
-				<p class="level">70% - Intermediate</p>
+			
+				<h3><i class="fas fa-server"></i>&nbsp;&nbsp;Oracle</h3>
+				
 			</div>
 			
 		</div>
 		
 		<!-- Group: Embedded & IoT-->
-		<h3 style="margin-top: 2rem; font-size: 1.5rem;">Embedded & IoT</h3>
+		<h3 style="margin-top: 2rem; font-size: 1.5rem; color: #5ced73;">Embedded & IoT</h3>
 		<div class="skills-grid">
 			<div class="skill-card">
 				<div class="badge">
 					<i class="fas fa-microchip"></i>
-					<span>Arduino Microcontroller</span>
+					<span>ATmega328P</span>
 				</div>
-				<p class="title">Arduino Uno</p>
-				<div class="progress-bar"><div class="progress" style="width: 75%"></div></div>
-				<p class="level">75% - Intermediate</p>
+				<p class="title">Arduino Uno - (C/C++ using Arduino IDE)</p>
+				
 			</div>
 			<div class="skill-card">
 				<div class="badge">
 					<i class="fas fa-microchip"></i>
 					<span>ESP32 Microcontroller</span>
 				</div>
-				<p class="title">ESP32 Microcontroller</p>
-				<div class="progress-bar"><div class="progress" style="width: 70%"></div></div>
-				<p class="level">70% - Intermediate</p>
+				<p class="title">ESP32 Microcontroller – Wi-Fi, MQTT, Sensor Interfacing</p>
+				
 			</div>
 			
 		</div>
@@ -886,6 +900,8 @@
 		</div>
 	</section>
 	
+	<button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+	
 	<div class="svg-background">
 		<svg viewBox="0 150 1440 100" preserveAspectRatio="none">
 			<path fill="#6c63ff" fill-opacity="0.1" 
@@ -895,7 +911,7 @@
 	</div>
 	<footer class="footer">
 		<div class="footer-container">
-			<p>&copy; 2025 Pratyush Ranjan. All rights reserved.</p>
+			<p>&copy; 2025 Pratyush Ranjan. All Rights Reserved.</p>
 			<div class="footer-icons">
 				<a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
 				<a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -903,17 +919,45 @@
 			</div>
 		</div>
 	</footer>
+	
+	
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-9N616J9W36"></script> <!-- Google tag (gtag.js) -->
     <script>
 	
-		const menuBar = document.getElementById('menu-bar');
-		const navbar = document.querySelector('.navbar');
+		const menuBar = document.getElementById("menu-bar");
+		const navLinks = document.getElementById("nav-links");
+		const overlay = document.getElementById("overlay");
+		const closeBtn = document.getElementById("close-btn");  // new close button
+	
+		menuBar.addEventListener("click", () => {
+			navLinks.classList.toggle("active");
+			overlay.classList.toggle("active");
+		});
 
-		menuBar.addEventListener('click', () => {
-			navbar.classList.toggle('active');
+		// close when clicking outside
+		document.addEventListener("click", function (event) {
+			const isClickInsideMenu = navLinks.contains(event.target);
+			const isClickOnMenuIcon = menuBar.contains(event.target);
+
+			if (!isClickInsideMenu && !isClickOnMenuIcon) {
+				navLinks.classList.remove("active");
+				overlay.classList.remove("active");
+			}
+		});
+		if (closeBtn) {
+			closeBtn.addEventListener("click", () => {
+				navLinks.classList.remove("active");
+				overlay.classList.remove("active");
+			});
+		}
+
+		// overlay click closes menu
+		overlay.addEventListener("click", () => {
+			navLinks.classList.remove("active");
+			overlay.classList.remove("active");
 		});
 
 		
@@ -996,6 +1040,20 @@
 				responseMessage.style.color = 'red';
 			}
 		});
+		window.onscroll = function () {
+			const btn = document.getElementById("backToTop");
+			if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+				btn.style.display = "block";
+			} else {
+				btn.style.display = "none";
+			}
+		};
+
+		// Scroll to top on click
+		document.getElementById("backToTop").onclick = function () {
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+		};
+		
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}
 		gtag('js', new Date());
